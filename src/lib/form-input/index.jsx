@@ -9,7 +9,7 @@ export const FormInput = ({ label, ...props }) => (
           props.value.length ? 'shrink' : ''
         }`}
       >
-        Display Name
+        {label}
       </label>
     )}
   </div>
