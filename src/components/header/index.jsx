@@ -1,6 +1,7 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { ReactComponent as CrwnLogo } from '../../assets/crown.svg'
+import { CartContext } from '../../contexts/cart'
 import { UserContext } from '../../contexts/user'
 import { signOutUser } from '../../utils/firebase'
 import CartDropdown from '../cart-dropdown'
@@ -8,11 +9,9 @@ import CartIcon from '../cart-icon'
 import './index.scss'
 
 const Header = () => {
-  const [showCartMenu, setShowCartMenu] = useState(false)
+  const { isCartOpen } = useContext(CartContext)
   const { currentUser } = useContext(UserContext)
-  const cartHandler = () => {
-    setShowCartMenu(!showCartMenu)
-  }
+
   return (
     <div className="navigation-bar">
       <Link className="logo-container" to="/">
@@ -31,9 +30,9 @@ const Header = () => {
             Sign In
           </Link>
         )}
-        <CartIcon onClick={cartHandler} />
+        <CartIcon />
       </div>
-      {showCartMenu && <CartDropdown />}
+      {isCartOpen && <CartDropdown />}
     </div>
   )
 }
