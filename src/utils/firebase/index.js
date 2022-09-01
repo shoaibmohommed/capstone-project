@@ -14,7 +14,11 @@ import {
   getFirestore,
   getDoc,
   setDoc,
-  doc
+  doc,
+  collection,
+  writeBatch,
+  query,
+  getDocs
 } from 'firebase/firestore'
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -29,7 +33,7 @@ const firebaseConfig = {
 }
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig)
+initializeApp(firebaseConfig)
 const provider = new GoogleAuthProvider()
 
 provider.setCustomParameters({
@@ -43,6 +47,41 @@ export const signInWithGoogleRedirect = () =>
   signInWithRedirect(auth, provider)
 
 export const db = getFirestore()
+
+export const addCollectionAndDocuments = async (
+  collectionKey,
+  objectsToAdd
+) => {
+  const collectionRef = collection(db, collectionKey)
+  const batch = writeBatch(db)
+
+  objectsToAdd.forEach((object) => {
+    const docRef = doc(
+      collectionRef,
+      object.title.toLowerCase()
+    )
+    batch.set(docRef, object)
+  })
+
+  await batch.commit()
+  console.log('batch write completed')
+}
+
+export const getCategoriesAndDocuments = async () => {
+  const collectionRef = collection(db, 'categories')
+  const qry = query(collectionRef)
+
+  const querySnapshot = await getDocs(qry)
+  const categoryMap = querySnapshot.docs.reduce(
+    (acc, docSnapshot) => {
+      const { title, items } = docSnapshot.data()
+      acc[title.toLowerCase()] = items
+      return acc
+    },
+    {}
+  )
+  return categoryMap
+}
 
 export const createUserFromAuth = async (
   userAuth,

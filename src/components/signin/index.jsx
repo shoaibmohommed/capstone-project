@@ -38,11 +38,10 @@ const SignInForm = () => {
     const { email, password } = formFields
 
     try {
-      const { user } =
-        await signInAuthUserWithEmailAndPassword(
-          email,
-          password
-        )
+      await signInAuthUserWithEmailAndPassword(
+        email,
+        password
+      )
       resetFormFields()
     } catch (error) {
       switch (error.code) {

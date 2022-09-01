@@ -17,7 +17,7 @@ export const UserProvider = ({ children }) => {
         createUserFromAuth(user)
       }
       setCurrentUser(user)
-      console.log(user)
+      console.log('user state changed', user)
     })
     return unsubscribe
   }, [])
