@@ -1,40 +1,40 @@
-import CategoryItem from "../category-item";
-import "./index.scss";
+import CategoryItem from '../category-item'
+import { CategoryListContainer } from './styles.jsx'
 
 const categories = [
   {
     id: 1,
-    title: "hats",
-    imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
+    title: 'hats',
+    imageUrl: 'https://i.ibb.co/cvpntL1/hats.png'
   },
   {
     id: 2,
-    title: "jackets",
-    imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
+    title: 'jackets',
+    imageUrl: 'https://i.ibb.co/px2tCc3/jackets.png'
   },
   {
     id: 3,
-    title: "sneakers",
-    imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
+    title: 'sneakers',
+    imageUrl: 'https://i.ibb.co/0jqHpnp/sneakers.png'
   },
   {
     id: 4,
-    title: "womens",
-    imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
+    title: 'womens',
+    imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png'
   },
   {
     id: 5,
-    title: "mens",
-    imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
-  },
-];
+    title: 'mens',
+    imageUrl: 'https://i.ibb.co/R70vBrQ/men.png'
+  }
+]
 
 const CategoryList = () => (
-  <div className="categories-list">
+  <CategoryListContainer>
     {categories.map(({ id, ...props }) => (
       <CategoryItem {...props} key={id} />
     ))}
-  </div>
-);
+  </CategoryListContainer>
+)
 
-export default CategoryList;
+export default CategoryList
