@@ -5,7 +5,8 @@ import {
   createAuthUserWithEmailAndPassword,
   createUserFromAuth
 } from '../../utils/firebase'
-import './index.scss'
+import './styles.jsx'
+import { SignupFormContainer } from './styles.jsx'
 
 const initialFormState = {
   displayName: '',
@@ -55,7 +56,7 @@ const SignupForm = () => {
     }
   }
   return (
-    <div className="signup-form-container">
+    <SignupFormContainer>
       <h2>Don't have an account?</h2>
       <form onSubmit={onFormSubmit}>
         <FormInput
@@ -94,7 +95,7 @@ const SignupForm = () => {
         />
         <Button type="submit">Submit</Button>
       </form>
-    </div>
+    </SignupFormContainer>
   )
 }
 

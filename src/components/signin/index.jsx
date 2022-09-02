@@ -5,7 +5,10 @@ import {
   signInAuthUserWithEmailAndPassword,
   signInWithGooglePopup
 } from '../../utils/firebase'
-import './index.scss'
+import {
+  ButtonContainer,
+  SignInFormContainer
+} from './styles'
 
 const initialFormState = {
   email: '',
@@ -61,7 +64,7 @@ const SignInForm = () => {
     }
   }
   return (
-    <div className="signin-form-container">
+    <SignInFormContainer>
       <h2>Already have an account?</h2>
       <form onSubmit={onFormSubmit}>
         <FormInput
@@ -81,7 +84,7 @@ const SignInForm = () => {
           name="password"
           value={formFields.password}
         />
-        <div className="buttons-container">
+        <ButtonContainer>
           <Button type="submit" onClick={signIn}>
             Sign In
           </Button>
@@ -92,9 +95,9 @@ const SignInForm = () => {
           >
             Sign In with google
           </Button>
-        </div>
+        </ButtonContainer>
       </form>
-    </div>
+    </SignInFormContainer>
   )
 }
 
