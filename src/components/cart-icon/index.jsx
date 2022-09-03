@@ -7,11 +7,11 @@ import {
 } from './styles'
 
 const CartIcon = () => {
-  const { isCartOpen, cartCount, setIsCartOpen } =
+  const { cartCount, toggelIsCartOpen } =
     useContext(CartContext)
-  const toggleCartOpen = () => setIsCartOpen(!isCartOpen)
+
   return (
-    <CartIconContainer onClick={toggleCartOpen}>
+    <CartIconContainer onClick={toggelIsCartOpen}>
       <StyledShoppingIcon />
       <ItemCount>{cartCount}</ItemCount>
     </CartIconContainer>
