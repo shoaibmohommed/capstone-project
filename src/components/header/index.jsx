@@ -1,7 +1,6 @@
-import { useContext } from 'react'
 import { useSelector } from 'react-redux'
 import { ReactComponent as CrwnLogo } from '../../assets/crown.svg'
-import { CartContext } from '../../contexts/cart'
+import { selectCartIsOpen } from '../../store/cart'
 import { selectUser } from '../../store/user'
 import { signOutUser } from '../../utils/firebase'
 import CartDropdown from '../cart-dropdown'
@@ -15,7 +14,7 @@ import {
 } from './styles.jsx'
 
 const Header = () => {
-  const { isCartOpen } = useContext(CartContext)
+  const isCartOpen = useSelector(selectCartIsOpen)
   const currentUser = useSelector(selectUser)
 
   return (
