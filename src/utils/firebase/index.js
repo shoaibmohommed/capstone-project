@@ -20,6 +20,7 @@ import {
   query,
   getDocs
 } from 'firebase/firestore'
+import categories from '../../store/categories'
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -72,15 +73,10 @@ export const getCategoriesAndDocuments = async () => {
   const qry = query(collectionRef)
 
   const querySnapshot = await getDocs(qry)
-  const categoryMap = querySnapshot.docs.reduce(
-    (acc, docSnapshot) => {
-      const { title, items } = docSnapshot.data()
-      acc[title.toLowerCase()] = items
-      return acc
-    },
-    {}
+  const categories = querySnapshot.docs.map((docSnapshot) =>
+    docSnapshot.data()
   )
-  return categoryMap
+  return categories
 }
 
 export const createUserFromAuth = async (

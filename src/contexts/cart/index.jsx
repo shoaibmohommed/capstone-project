@@ -1,5 +1,7 @@
 import { createContext, useReducer } from 'react'
 
+const createAction = (type, payload) => ({ type, payload })
+
 const addCartItem = (cartItems, itemToAdd) => {
   const foundItem = cartItems.find(
     (product) => product.id === itemToAdd.id
@@ -93,15 +95,16 @@ export const CartProvider = ({ children }) => {
         },
         { total: 0, count: 0 }
       )
-    dispatch({
-      type: SET_CART_ITEMS_ACTION_TYPE,
-      payload: { cartItems: items, cartCount, cartTotal }
-    })
+    dispatch(
+      createAction(SET_CART_ITEMS_ACTION_TYPE, {
+        cartItems: items,
+        cartCount,
+        cartTotal
+      })
+    )
   }
   const toggelIsCartOpen = () => {
-    dispatch({
-      type: TOGGLE_IS_CART_OPEN_ACTION_TYPE
-    })
+    dispatch(createAction(TOGGLE_IS_CART_OPEN_ACTION_TYPE))
   }
 
   const addItemToCart = (itemToAdd) => {

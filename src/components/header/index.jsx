@@ -1,7 +1,8 @@
 import { useContext } from 'react'
+import { useSelector } from 'react-redux'
 import { ReactComponent as CrwnLogo } from '../../assets/crown.svg'
 import { CartContext } from '../../contexts/cart'
-import { UserContext } from '../../contexts/user'
+import { selectUser } from '../../store/user'
 import { signOutUser } from '../../utils/firebase'
 import CartDropdown from '../cart-dropdown'
 import CartIcon from '../cart-icon'
@@ -15,7 +16,7 @@ import {
 
 const Header = () => {
   const { isCartOpen } = useContext(CartContext)
-  const { currentUser } = useContext(UserContext)
+  const currentUser = useSelector(selectUser)
 
   return (
     <NavigationBar>
