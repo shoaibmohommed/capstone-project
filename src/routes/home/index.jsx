@@ -4,9 +4,7 @@ import Header from '../../components/header'
 const Home = () => (
   <div>
     <Header />
-    <div>
-      <Outlet />
-    </div>
+    <Outlet />
   </div>
 )
 
