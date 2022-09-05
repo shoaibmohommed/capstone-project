@@ -6,22 +6,12 @@ import Authentication from './components/authentication'
 import Checkout from './components/checkout'
 import Shop from './routes/shop'
 import { useEffect } from 'react'
-import {
-  createUserFromAuth,
-  onAuthStateChangeListner
-} from './utils/firebase'
-import { setUser } from './store/user'
+import { fetchUser } from './store/user/thunks'
 
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {
-    const unsubscribe = onAuthStateChangeListner((user) => {
-      if (user) {
-        createUserFromAuth(user)
-      }
-      dispatch(setUser(user))
-    })
-    return unsubscribe
+    dispatch(fetchUser())
   }, [dispatch])
 
   return (

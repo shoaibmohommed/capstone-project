@@ -1,7 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
+import {
+  fetchUserReducers,
+  signInWithEmailReducer,
+  signInWithGoogleReducer
+} from './thunks'
 
 export const INTIAL_STATE = {
-  currentUser: null
+  currentUser: null,
+  error: null,
+  loading: false
 }
 
 const userReducer = createSlice({
@@ -11,6 +18,11 @@ const userReducer = createSlice({
     setUser(state, { payload: user }) {
       state.currentUser = user
     }
+  },
+  extraReducers: {
+    ...fetchUserReducers,
+    ...signInWithGoogleReducer,
+    ...signInWithEmailReducer
   }
 })
 

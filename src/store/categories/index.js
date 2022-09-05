@@ -17,7 +17,6 @@ export const fetchCategories = createAsyncThunk(
         await getCategoriesAndDocuments()
       return categoriesData
     } catch (error) {
-      console.log('rejectWithValue', error.message)
       return rejectWithValue(error)
     }
   }
@@ -40,8 +39,6 @@ const categoriesReducer = createSlice({
       state,
       { payload: categories, meta, ...extraProps }
     ) => {
-      console.log('test fulfilled', extraProps)
-
       state.loading = false
       state.error = null
       state.categories = categories
