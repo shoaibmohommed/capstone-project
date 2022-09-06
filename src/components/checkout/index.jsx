@@ -4,6 +4,7 @@ import {
   selectCartTotal
 } from '../../store/cart'
 import CheckoutItem from '../checkout-item'
+import PaymentForm from '../payment-form'
 import {
   CheckoutContainer,
   CheckoutHeader,
@@ -28,6 +29,7 @@ const Checkout = () => {
         <CheckoutItem key={item.id} {...item} />
       ))}
       <Total className="total">Total: ${cartTotal}</Total>
+      <PaymentForm />
     </CheckoutContainer>
   )
 }
