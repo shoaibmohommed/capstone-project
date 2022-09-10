@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-import './index.scss'
+import { GlobalStyles } from './global-styles.js'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { Provider } from 'react-redux'
@@ -19,6 +19,7 @@ root.render(
       <PersistGate persistor={persistor}>
         <BrowserRouter>
           <Elements stripe={stripePromise}>
+            <GlobalStyles />
             <App />
           </Elements>
         </BrowserRouter>

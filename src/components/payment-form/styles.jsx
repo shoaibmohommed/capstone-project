@@ -8,10 +8,17 @@ export const PaymentFormContainer = styled.div`
   align-items: center;
   justify-content: center;
   margin-left: auto;
+  @media screen and (max-width: 800px) {
+    width: 100%;
+  }
 `
 
 export const FormContainer = styled.form`
   min-width: 500px;
+  @media screen and (max-width: 800px) {
+    min-width: unset;
+    width: 100%;
+  }
 `
 export const PaymentButton = styled(Button)`
   margin-left: auto;

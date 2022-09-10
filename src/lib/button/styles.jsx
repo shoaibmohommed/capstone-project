@@ -30,6 +30,11 @@ export const ButtonContainer = styled.button`
     color: black;
     border: 1px solid black;
   }
+
+  @media screen and (max-width: 800px) {
+    padding: 0 10px;
+    min-width: 100px;
+  }
 `
 export const GoogleButtonContainer = styled(
   ButtonContainer
